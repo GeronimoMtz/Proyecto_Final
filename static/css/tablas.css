@@ -1,0 +1,39 @@
+/*TABLAS*/
+table {
+  background-color: white;
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, td {
+  padding: 20px;
+}
+
+thead {
+  background-color: #4E7843; /* Cambiado a un tono verde */
+  border-bottom: solid 5px #3A5F2B; /* Cambiado a un tono verde más oscuro */
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #95a773; /* Cambiado a un tono verde claro */
+}
+
+tr:hover td {
+  background-color: #c2d2ba; /* Cambiado a un tono verde más oscuro al hacer hover */
+  color: white;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.enlace-tabla {
+  color: #246d12; /* Cambiado a un tono verde para los enlaces */
+}

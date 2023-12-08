@@ -1,0 +1,81 @@
+/* Estilos para la barra de navegación */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+header{
+  background: url(Banner.png);
+  background-size: cover;
+  background-position:center;
+  height: 300px;
+}
+
+.logo {
+  max-width: 100px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Estilos para el ícono de menú en dispositivos móviles */
+.checkbtn {
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* Estilos para la sección principal de la página */
+.main-section {
+  padding: 20px;
+}
+
+/* Estilos para el encabezado */
+header {
+  background: url(Banner.png);
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  text-align: center;
+  color: #fff;
+  padding: 50px 0;
+}
+
+/* Estilos para la sección de promoción */
+.promo-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.promo-section img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+
+/* Estilos específicos para el encabezado en la sección principal */
+.promo-title {
+  margin-bottom: 10px;
+  font-size: 40px; 
+  font-family: 'Verdana', sans-serif; 
+}
+
+/* Estilos específicos para el párrafo en la sección de promoción */
+.promo-description {
+  font-size: 18px; 
+  font-family: 'Verdana', sans-serif; 
+}

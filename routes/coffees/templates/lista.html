@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/static/css/barra.css">
+    <link rel="stylesheet" href="/static/css/carrito.css">
+    <link rel="stylesheet" href="/static/css/tablas.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe</title>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">   
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="mainAdmin" class="enlace">
+            <img src="/static/img/Logo.png" alt="" class="logo">
+        </a>
+        <ul>
+            <li><a href="agregarcafe">Agregar cafe</a></li>
+            <li><a class="active" href="listacafes">Inventario</a></li>
+            <li><a href="pdf">Reportes</a></li>
+            <li><a href="csv">Descargar CSV</a></li>
+            <li><a href="login">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+<section>
+    <header>
+        
+    </header>
+    <section class="contenedor">
+        <div>
+            <h1>Cafes</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Ingredientes</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for cafe in cafes%}
+                    <tr>
+                        <td>{{cafe.id}}</td>
+                        <td>{{cafe.nombre}}</td>
+                        <td>{{cafe.precio}}</td>
+                        <td>{{cafe.ingredientes}}</td>
+                        <td><a href="editarcafe/{{cafe.id}}" class="enlace-tabla">Editar</a></td>
+                        <td><a href="eliminarcafe/{{cafe.id}}" class="enlace-tabla">Eliminar</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="contenedor">
+        <div>
+            <h1>Ventas</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Cafes</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for venta in ventas%}
+                    <tr>
+                        <td>{{venta.id}}</td>
+                        <td>{{venta.cliente}}</td>
+                        <td>{{venta.cafes}}</td>
+                        <td>{{venta.cantidad}}</td>
+                        <td>{{venta.total}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="contenedor">
+        <div>
+            <h1>Usuarios</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        {% if not usuario.admin %}
+                            <tr>
+                                <td>{{ usuario.id }}</td>
+                                <td>{{ usuario.nombre }}</td>
+                                <td>{{ usuario.email }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+</body>
+<script>
+    function checkToken(){
+        const token  = localStorage.getItem('token')
+        if(token){
+            fetch(`/login?token=${token}`)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)
+                if(data.message!="valid token"){
+                    localStorage.removeItem('token')
+                    window.location.href='/login'
+                }
+            }).catch(error =>{
+                window.location.href='/login'
+                console.log(error)
+            })
+        }else{
+            window.location.href='/login'
+        }
+    }
+</script>
+</html>

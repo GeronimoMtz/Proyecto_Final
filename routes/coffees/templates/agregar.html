@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/formularios.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe</title>
+</head>
+<body>
+    <h1>Agregar cafes</h1>
+    <form method="POST">
+        {{forma.csrf_token}}
+        <p>
+            {{forma.nombre.label}}<br/>
+            {{forma.nombre(size=30)}}
+        </p>
+        <p>
+            {{forma.precio.label}}<br/>
+            {{forma.precio(size=30)}}
+        </p>
+        <p>
+            {{forma.ingredientes.label}}<br/>
+            {{forma.ingredientes(size=30)}}
+        </p>
+        {{ forma.enviar(class="submit-button") }}
+    </form>
+</body>
+<script>
+    function checkToken(){
+        const token  = localStorage.getItem('token')
+        if(token){
+            fetch(`/login?token=${token}`)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)
+                if(data.message!="valid token"){
+                    localStorage.removeItem('token')
+                    window.location.href='/login'
+                }
+            }).catch(error =>{
+                window.location.href='/login'
+                console.log(error)
+            })
+        }else{
+            window.location.href='/login'
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/barra.css">
+    <link rel="stylesheet" href="/static/css/carrito.css">
+    <title>Coffee</title>
+
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">   
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="main?email_usuario={{ email_usuario }}" class="enlace">
+            <img src="/static/img/LOGO.png" alt="" class="logo">
+        </a>
+        <ul>
+            <li><a class="active" href="coffee?email_usuario={{ email_usuario }}">Tienda</a></li>
+            <li><a href="login">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+    <section>
+        <header>
+
+        </header>
+    </section>
+    <br>
+    <div class="container">
+        <div class="product-grid">
+
+            <div class="product-grid__item">
+                <div class="product-grid__imagen">
+                    <img src="/static/img/Black.jpg" alt="">
+                </div>
+                <div class="product-grid__info">
+                    {% for cafe in cafes %}
+                    {% if cafe.id == 1 %}
+                    <p class="product-grid__name">{{ cafe.nombre }}</p>
+                    <p class="product-grid__price">{{ cafe.precio }}</p>
+                    <a href="#" class="product-grid__btn btn-default" data-btn-action="add-btn-cart" data-modal="#jsModalCarrito"  >Agregar al carrito</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="product-grid__item">
+                <div class="product-grid__imagen">
+                    <img src="/static/img/Americano.jpg" alt="">
+                </div>
+                <div class="product-grid__info">
+                    {% for cafe in cafes %}
+                    {% if cafe.id == 2 %}
+                    <p class="product-grid__name">{{ cafe.nombre }}</p>
+                    <p class="product-grid__price">{{ cafe.precio }}</p>
+                    <a href="#" class="product-grid__btn btn-default" data-btn-action="add-btn-cart" data-modal="#jsModalCarrito" >Agregar al carrito</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="product-grid__item">
+                <div class="product-grid__imagen">
+                    <img src="/static/img/Latte.jpg" alt="">
+                </div>
+                <div class="product-grid__info">
+                    {% for cafe in cafes %}
+                    {% if cafe.id == 3 %}
+                    <p class="product-grid__name">{{ cafe.nombre }}</p>
+                    <p class="product-grid__price">{{ cafe.precio }}</p>
+                    <a href="#" class="product-grid__btn btn-default" data-btn-action="add-btn-cart" data-modal="#jsModalCarrito">Agregar al carrito</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="product-grid__item">
+                <div class="product-grid__imagen">
+                    <img src="/static/img/Cappuccino.jpg" alt="">
+                </div>
+                <div class="product-grid__info">
+                    {% for cafe in cafes %}
+                    {% if cafe.id == 4 %}
+                    <p class="product-grid__name">{{ cafe.nombre }}</p>
+                    <p class="product-grid__price">{{ cafe.precio }}</p>
+                    <a href="#" class="product-grid__btn btn-default" data-btn-action="add-btn-cart" data-modal="#jsModalCarrito">Agregar al carrito</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="product-grid__item">
+                <div class="product-grid__imagen">
+                    <img src="/static/img/Galão.jpg" alt="">
+                </div>
+                <div class="product-grid__info">
+                    {% for cafe in cafes %}
+                    {% if cafe.id == 5 %}
+                    <p class="product-grid__name">{{ cafe.nombre }}</p>
+                    <p class="product-grid__price">{{ cafe.precio }}</p>
+                    <a href="#" class="product-grid__btn btn-default" data-btn-action="add-btn-cart" data-modal="#jsModalCarrito">Agregar al carrito</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+        <!--MODAL CARRITO-->
+        <div class="modal" id="jsModalCarrito">
+            <div class="modal__container">
+                <button type="button" class="modal__close fa-solid fa-xmark jsModalClose "></button>
+                <div class="modal__info">
+                    <div class="modal__header">
+                        <h2><i class="fa-brands fa-opencart"></i>Carrito</h2>
+                    </div>
+                    <div class="modal__body">
+                        <div class="modal__list">
+                            
+                        </div>
+                    </div>
+                    <div class="modal__footer">
+                        <div class="modal__list-price">
+                            <ul>
+
+                            </ul>
+                            <h4 class="cantidad">Cantidad de Cafés: <span class="jsCartItemCount">0</span></h4>
+                            <h4 class="modal__total-cart"> Total: </h4>
+                        </div>
+                        <div class="modal__btns">
+                            <a href="#" class="btn-border">Vaciar carrito</a>
+                            <a href="#" class="btn-primary">Comprar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Pague en OXXO -->
+        <div class="modal" id="jsModalOXXO">
+            <div class="modal__container">
+                <button type="button" class="modal__close fa-solid fa-xmark jsModalClose"></button>
+                <div class="modal__info">
+                    <div class="modal__header">
+                        <h2>Pague en OXXO</h2>
+                    </div>
+                    <div class="modal__body">
+                        <img src="/static/img/LOGO_OXXO.png" alt="">
+                        <p>Diríjase a su tienda OXXO más cercana para realizar el pago.</p>
+                        <p>Muestre el siguiente QR en la caja.</p>
+                        <img src="/static/img/OXXO.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const comprarBtn = document.querySelector('.btn-primary');
+            comprarBtn.addEventListener('click', enviarDatosAlServidor);
+
+            // Obtén el ID del usuario directamente de la plantilla de Flask con Jinja
+            const emailUsuario = '{{ email_usuario }}';
+
+            function enviarDatosAlServidor() {
+                console.log('Click en el botón de comprar');
+
+                const cantidad = cartItemCount;
+                const total = cartPayment;
+                const cafes = coffeesNames;
+
+                // Realizar la solicitud fetch al servidor
+                fetch('/comprar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        'emailUsuario': emailUsuario,
+                        'cafes':cafes,
+                        'cantidad': cantidad,
+                        'total': total
+                    })
+                }).then(response => response.json())
+                    .then(data => {
+                        // Manejar la respuesta del servidor según sea necesario
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar datos al servidor:', error);
+                    });
+            }
+        });
+    </script>
+    <script>
+        function checkToken(){
+            const token  = localStorage.getItem('token')
+            if(token){
+                fetch(`/login?token=${token}`)
+                .then(response => response.json())
+                .then(data =>{
+                    console.log(data)
+                    if(data.message!="valid token"){
+                        localStorage.removeItem('token')
+                        window.location.href='/login'
+                    }
+                }).catch(error =>{
+                    window.location.href='/login'
+                    console.log(error)
+                })
+            }else{
+                window.location.href='/login'
+            }
+        }
+    </script>
+  
+</body>
+</html>
